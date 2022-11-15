@@ -1,9 +1,13 @@
-## *Stateless widget* dan *Stateful widget*
-| _Stateless widget_ | _Stateful widget_ |
+## Perbedaan `Navigator.push` dan `Navigator.pushReplacement`.
+| `Navigator.push` | `Navigator.pushReplacement` |
 |--|--|
-| Suatu _widget_ dikatakan _stateless_ jika _widget_ tersebut tidak dapat berubah sama sekali meskipun dilakukan interaksi terhadapnya. | Sementara, suatu _widget_ dikatakan _stateful_ jika _widget_ tersebut dapat berubah (tampilan, warna, dll.) ketika sesuatu terjadi seperti sebuah interaksi oleh user.
+| Sebuah method untuk _push_ sebuah route ke stack Navigator	| Mengganti route yang saat ini ditampilkan dengan sebuah route baru dan _push_ route baru ke stack Navigator
 
 ## Daftar _Widget_ yang Digunakan pada Proyek ini beserta Fungsinya
+- Navigator
+	- Widget yang mengelola sekumpulan widget _child_ dengan struktur stack.
+ - Expanded
+	 - Widget yang memperluas _child_ dari Row, Column, atau Flex sehingga mengisi ruang yang tersedia.
  - Text
 	 - Menampilkan tulisan dengan satu _style_
  - Column
@@ -21,23 +25,22 @@
  - EdgeInsets
 	 - Memberikan _Offset_ pada 4 arah kardinal yang bersifat _immutable_
 
-## Method `setState()`
-Digunakan untuk mengubah _state_ internal dari sebuah objek sekaligus memperbarui tampilan. Jika perubahan _state_ tidak menggunakan `setState()`, perubahan tidak langsung diperbarui pada tampilan aplikasi.
-## Perbedaan antara `const` dan `final`
-Kedua variabel ini tidak dapat diubah setelah diinisialisasikan. value dari `const` harus diketahui pada _compile-time_, semetara value dari `final` harus diketahui pada _run-time_
+## Jenis-jenis _event_ yang ada pada Flutter
+- `onPressed()`
+- `onChanged()`
+- `onSaved()`
+
+## Cara `Navigator` "mengganti" halaman dari aplikasi Flutter.
+Navigator bekerja menggunaan struktur data _stack_. Setiap tampilan halaman atau _route_ di _push_ ke stack Navigator untuk ditampilkan. _Route_ yang berada di paling atas _stack_ menjadi _route_ yang ditampilkan saat ini. Navigator mengganti halaman dengan operasi _pop_ atau _push_ pada route saat ini stack.
 
 ## Implementasi Tugas
-
- 1. Menambahkan 2 variabel pada `_MyHomePageState`
-	 - `_condition` untuk menyimpan string sifat angka ("GENAP" atau "GANJIL")
-	 - `_color` untuk menyimpan warna string `_condition`
-2. Membuat fungsi `_decrementCounter()` untuk mengurangi `_counter` dengan 1. Jika `_counter` = 0, tidak melakukan apa-apa
-3. Membuat fungsi `_changeCondition()`
-	- Jika `_counter` genap atau 0,
-		- `_condition = "GENAP"`
-		- `_color = Colors.red`
-	- Jika ganjil,
-		- `_condition = "GANJIL"`
-		- `_color = Colors.blue`
-4. Tambahkan `FloatingActionButton` yang memanggil `_decrementCounter()` dan terletak di pojok kanan bawah tampilan aplikasi
-5. Tambahkan _widget_ `Visibility` yang menyembunyikan tombol pada step sebelumnya jika `_counter` < 1
+1. Buat komponen Drawer untuk menavigasi ke _route_ lain.
+2. Buat halaman form untuk membuat Budget baru. Form berisi field judul budget, nominal budget, dan jenis.
+3. Buat TextField untuk judul dan nominal, sementara buat DropdownButtonFormField untuk jenis. Pilihan pada _dropdown_ terdiri dari 'Pengeluaran' dan 'Pemasukan'
+4. Buat tombol untuk menyimpan input pada form budget dengan TextButton. pastikan semua field terisi saat akan tersimpan dengan menambahkan `validator` pada masing-masing field.
+5. Buat sebuah list kosong global untuk menyimpan setiap data budget yang didapat dari submisi form.
+6. Buat halaman list budget untuk menampilkan setiap data budget dalam bentuk _cards_
+7. Impor file .dart dari halaman form untuk mengakses list budget
+8. Buat tampilan untuk setiap elemen pada list menggunakan builder `ListView.builder()`
+9. Tetapkan value `itemCount` dari builder sebagai panjang list budget
+10. Buat widget `Card` yang menampilkan judul, nominal, dan jenis suatu budget, lalu tetapkan widget tersebut sebagai `itemBuilder` dari builder
