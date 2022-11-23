@@ -1,5 +1,6 @@
 import 'package:counter_7/main.dart';
 import 'package:counter_7/form.dart';
+import 'package:counter_7/page/mywatchlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -47,10 +48,20 @@ class _MyDataPageState extends State<MyDataPage> {
                     ListTile(
                       title: const Text('Data Budget'),
                       onTap: () {
-                        // Route menu ke halaman form
+                        // Route menu ke halaman data budget
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => const MyDataPage()),
+                        );
+                      },
+                    ),
+                    ListTile(
+                      title: const Text('My Watchlist'),
+                      onTap: () {
+                        // Route menu ke halaman watchlist
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const MyWatchlistPage()),
                         );
                       },
                     ),
@@ -99,44 +110,6 @@ class _MyDataPageState extends State<MyDataPage> {
                   )
                 ],
               ),
-
-
-
-
-
-            // Card(
-            //   child: Column(
-            //     mainAxisSize: MainAxisSize.min,
-            //     children: <Widget>[
-            //       Padding(
-            //         padding: EdgeInsets.all(8.0),
-            //         child: Row(
-            //           mainAxisAlignment: MainAxisAlignment.start,
-            //           children: const [
-            //             Text(
-            //               "Beli Sate Pacil",
-            //               style: TextStyle(fontSize: 20.0),
-            //             ),
-            //           ],
-            //         ),
-            //       ),
-            //       Padding(
-            //         padding: EdgeInsets.all(8.0),
-            //         child: Row(
-            //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //           children: const [
-            //             Text("150000"),
-            //             Text("Pemasukan"),
-            //           ],
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-
-
-
-
         );
     }
 }
